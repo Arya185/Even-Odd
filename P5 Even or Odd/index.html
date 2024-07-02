@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Even or Odd App</title>
+    <style> 
+        * {
+            font-size: 40px;
+            font-family: Calibri;
+        }
+        body {
+            background-color: lightblue;
+        }
+    </style>
+    <script>
+        function isEven(number) {
+            return number % 2 === 0;
+        }
+
+        function isOdd(number) {
+            return number % 2 !== 0;
+        }
+
+        function compute(event) {
+            event.preventDefault();
+            let num = document.getElementById("num");
+            let message = document.getElementById("message");
+            let msg = "";
+
+            if (num.value === "") {
+                alert("Please Enter Your Number:");
+                message.innerHTML = "";
+                num.focus();
+                return;
+            }
+
+            let n = parseFloat(num.value);
+
+            if (isEven(n)) {
+                msg = n + " is an even number";
+            } else if (isOdd(n)) {
+                msg = n + " is an odd number";
+            }
+
+            message.innerHTML = msg;
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h1>Even or Odd App</h1>
+        <form onsubmit="compute(event)">
+            <input type="number" placeholder="Enter Number" id="num" />
+            <br><br>
+            <input type="submit" />
+        </form>
+        <h2 id="message"></h2>
+    </center>
+</body>
+</html>
